@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import LoginPage from './login/LoginPage';
-import RegisterPage from './register/registerPage';
+import RegisterPage from './register/RegisterPage';
 import './style.scss';
 import { Box } from '@mui/material';
 import { instance } from '../../utils/axios';

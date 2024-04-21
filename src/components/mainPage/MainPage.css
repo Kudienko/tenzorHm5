@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+.search__container{
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    border-radius: 50px;
+    border: 2px solid black;
+    width: 40vw;
+    height: 5vh;
+}
+
+.search__container input{
+    width: 90%;
+    border-radius: 50px;
+    font-size: 2vh;
+    border: none;
+    outline: none;
+    outline-offset: 0;
+}
+
+.searchLogo{
+    margin-left: 2vh;
+    width: 3vh;
+    height: 3vh;
+}
