@@ -4,18 +4,22 @@ import LoginPage from "./login/LoginPage";
 import RegisterPage from "./register/RegisterPage";
 import "./style.scss";
 import { Box } from "@mui/material";
-import { instance } from "../../utils/axios";
+import { instance, instanceRegister } from "../../utils/axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/thunks/loginThunk/loginThunk";
+import { registerUser } from "../../store/thunks/registerThunk/registerThunk";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchema } from "../../utils/yup/yup";
+import { registerSchema } from "../../utils/yup/yup"
 
 function AuthRootComponent() {
+
+  const location = useLocation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
   const [userName, setUsername] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,8 +29,9 @@ function AuthRootComponent() {
     handleSubmit,
   } = useForm({
     mode: '',
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(location.pathname === "/login" ? loginSchema : registerSchema)
   });
+
 
   console.log('errors', errors);
   const handleSubmitForm = async (data) => {
@@ -42,29 +47,28 @@ function AuthRootComponent() {
           client_secret: "",
         };
         console.log(userData);
-        await dispatch(loginUser(userData)); // createAsincThunk
+        dispatch(loginUser(userData)); // createAsincThunk
         navigate("/");
       } catch (e) {
         return e;
       }
     } else {
-      if (password === repeatPassword) {
+      if (data.password === data.repeatPassword) {
         const userData = {
-          firstName,
-          userName,
-          email,
-          password,
-          repeatPassword,
+          login: data.username,
+          email: data.email,
+          hashed_password: data.password,
+          city: "Moscow"
         };
-        const newUser = await instance.post("auth/register", userData);
-        console.log(newUser.data);
+        console.log("1231");
+        console.log(userData);
+        dispatch(registerUser(userData));
+        navigate("/");
       } else {
         throw new Error("У вас не совпадают пароли");
       }
     }
   };
-
-  const location = useLocation();
 
   return (
     <div className="root">
@@ -84,11 +88,8 @@ function AuthRootComponent() {
             <LoginPage register={register} errors={errors}/>
           ) : location.pathname === "/register" ? (
             <RegisterPage
-              setEmail={setEmail}
-              setPassword={setPassword}
-              setRepeatPassword={setRepeatPassword}
-              setFirstName={setFirstName}
-              setUsername={setUsername}
+              register={register} 
+              errors={errors}
             />
           ) : null}
         </Box>
