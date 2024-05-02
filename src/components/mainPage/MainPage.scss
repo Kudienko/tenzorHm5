@@ -1,0 +1,68 @@
+%customFunction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+.content {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10em;
+}
+
+.header {
+  @extend %customFunction;
+  width: 100vw;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  padding-top: 1em;
+}
+
+.main_wrapper {
+  flex: 1 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+
+}
+
+.next_days_wrapper {
+  background-color: red;
+}
+
+.current_day_wrapper {
+  background-color: aquamarine;
+  padding: 25px 25px;
+}
+
+.footer {
+  @extend %customFunction;
+  flex: 0 0 auto;
+  height: 200px;
+  width: 100%;
+  background-color: blanchedalmond;
+  opacity: .3
+
+}
+
+video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}

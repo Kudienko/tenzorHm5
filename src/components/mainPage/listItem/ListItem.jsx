@@ -4,7 +4,7 @@ import SvgItem from "../svgItem/SvgItem";
 
 const ListItem = () => {
   return (
-    <div>
+    <div className="wrapper">
       <div className="card">
         <div className="container">
           <SvgItem weather={"sunny"}/>
