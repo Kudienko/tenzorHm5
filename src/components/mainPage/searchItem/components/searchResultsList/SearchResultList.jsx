@@ -7,9 +7,6 @@ export const SearchResultList = ({ results }) => {
     return (
         <div className='resilts_list'>
             {
-                // results !== undefined ? results.map((result, id) => {
-                //     return <div key={id}>{result.name}</div>
-                // }) : null
                 results.map((result, id) => {
                     return <SearchResult result={result} key={id}/>
                 })
