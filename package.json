@@ -1,6 +1,7 @@
 {
   "name": "tenzor-project-front",
   "version": "0.1.0",
+  "homepage": "https://Kudienko.github.io/tenzorHm5",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -10,7 +11,7 @@
     "@material-ui/styles": "^4.11.5",
     "@mui/material": "^5.15.15",
     "@reduxjs/toolkit": "^2.2.3",
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^5.17.0", 
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",

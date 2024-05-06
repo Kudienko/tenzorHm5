@@ -1,32 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { ReactComponent as SearchLogo } from './icons/Search.svg'
 import './SearchBar.scss'
-import axios from "axios";
+import cities from '../../../../../russia.json'
 
 export const SearchBar = ({ setResults }) => {
     const [input, setInput] = useState("")
+    
+    const filterCities = (input, listOfCities) => {
+        if (!input) {
+            return listOfCities;
+        }
+        return listOfCities.filter(({city}) => 
+            city.toLowerCase().includes(input.toLowerCase())
+        )
+    }
+    const setVisible = () => {
+        document.getElementsByClassName('resilts_list')[0].style.display = "block";
+    }
 
     useEffect(() => {
-        const myRe = new RegExp(/^[а-яА-Я]+$/);
-        if (myRe.exec(input)) {
-            const Debounce = setTimeout(() => {
-                axios.get(`http://127.0.0.1:8000/api/get_city?city_query=${input}`)
-                    .then((response) => {
-                        console.log(response.data);
-                        setResults(response.data)
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            }, 1000)
-            return () => clearTimeout(Debounce)
-        }
-    }, [setResults, input])
+        const Debounce = setTimeout(() => {
+            const filteredCities = filterCities(input, cities);
+            setResults(filteredCities)
+        }, 300)
+        return () => clearTimeout(Debounce)
+    }, [input, setResults])
+
+    
+    
 
     return (
         <div className='input_wrapper'>
             <SearchLogo id="search_icon" />
-            <input type="text" placeholder='Type to search...' value={input} onChange={(e) => setInput(e.target.value)} />
+            <input type="text" placeholder='Type to search...' value={input} onChange={(e) => setInput(e.target.value)} onClick={setVisible}/>
         </div>
     )
 }
