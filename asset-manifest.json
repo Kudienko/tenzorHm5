@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tenzorHm5/static/css/main.23a52244.css",
+    "main.js": "/tenzorHm5/static/js/main.0f74a097.js",
+    "static/media/rain.mp4": "/tenzorHm5/static/media/rain.7e80cb7ef7a8baed7c1b.mp4",
+    "index.html": "/tenzorHm5/index.html",
+    "static/media/Search.svg": "/tenzorHm5/static/media/Search.3359db57975dcc5fed9fc245a3c1e746.svg",
+    "main.23a52244.css.map": "/tenzorHm5/static/css/main.23a52244.css.map",
+    "main.0f74a097.js.map": "/tenzorHm5/static/js/main.0f74a097.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.23a52244.css",
+    "static/js/main.0f74a097.js"
+  ]
+}
