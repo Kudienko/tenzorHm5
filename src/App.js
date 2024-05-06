@@ -12,13 +12,13 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<PrivateRoute />}>
-          <Route path="/" element={<MainPage />} />
+          <Route exact path="/" element={<MainPage />} />
         </Route>
-        <Route path='/kik' element={<SearchItem />} />
-        <Route path='/list' element={<ListItem />} />
-        <Route path="/pipa" element={<Pipa />} />
-        <Route path="login" element={<AuthRootComponent />} />
-        <Route path="register" element={<AuthRootComponent />} />
+        <Route exact path='/kik' element={<SearchItem />} />
+        <Route exact path='/list' element={<ListItem />} />
+        <Route exact path="/pipa" element={<Pipa />} />
+        <Route exact path="login" element={<AuthRootComponent />} />
+        <Route exact path="register" element={<AuthRootComponent />} />
       </Routes>
     </div>
   );
